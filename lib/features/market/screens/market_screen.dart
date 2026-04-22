@@ -272,7 +272,7 @@ class _PropertyCard extends ConsumerWidget {
                       ),
                     ),
                     // Hot Badge (Bottom Left)
-                    if (block.hot)
+                    if (block.isHot)
                       Positioned(
                         bottom: 8, left: 8,
                         child: _Chip(
