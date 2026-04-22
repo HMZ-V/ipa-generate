@@ -1,0 +1,52 @@
+name: stackup_flutter
+description: "StackUp — Gamified REIT investing platform. Neon dark glassmorphism UI."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── State Management ─────────────────────────────────────────────────────────
+  # Replaces Zustand. StateNotifierProvider maps directly to the store pattern.
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # ── Navigation ───────────────────────────────────────────────────────────────
+  # Handles nested routes (ShellRoute for bottom nav) and path params (:id).
+  go_router: ^14.2.7
+
+  # ── Typography ───────────────────────────────────────────────────────────────
+  # Provides Orbitron, Inter, and JetBrains Mono without manual asset bundling.
+  google_fonts: ^6.2.1
+
+  # ── Animations ───────────────────────────────────────────────────────────────
+  # Covers fade-up, burst, and bounce entry animations from CSS keyframes.
+  animate_do: ^3.3.4
+
+  # ── Persistence ──────────────────────────────────────────────────────────────
+  # Replaces zustand/middleware persist — saves STK balance, level, holdings.
+  shared_preferences: ^2.3.2
+
+  # ── Icons ────────────────────────────────────────────────────────────────────
+  # The Vite project uses lucide-react; this package mirrors the same icon set.
+  lucide_icons_flutter: ^3.1.13
+
+  # ── Utilities ────────────────────────────────────────────────────────────────
+  # intl is needed for number formatting (toLocaleString → NumberFormat)
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
