@@ -29,10 +29,10 @@ class _TabItem {
 
 const _tabs = [
   _TabItem('/app', 'Home', Icons.home_rounded),
-  _TabItem('/app/city', 'City', Icons.map_rounded),
-  _TabItem('/app/territories', 'Land', Icons.military_tech_rounded),
   _TabItem('/app/market', 'Market', Icons.storefront_rounded),
-  _TabItem('/app/alliance', 'Alliance', Icons.shield_rounded),
+  _TabItem('/app/city', 'Map', Icons.explore_rounded),
+  _TabItem('/app/wallet', 'Wallet', Icons.account_balance_wallet_rounded),
+  _TabItem('/app/missions', 'Missions', Icons.emoji_events_rounded),
 ];
 
 // ── Shell layout ──────────────────────────────────────────────────────────────
@@ -48,14 +48,14 @@ class AppLayout extends ConsumerStatefulWidget {
 class _AppLayoutState extends ConsumerState<AppLayout>
     with TickerProviderStateMixin {
   // ── Flash animation (mirrors useFlash hook) ─────────────────────────────
-  late final AnimationController _flashCtrl;
-  late final Animation<double> _flashScale;
-  late final Animation<Color?> _flashColor;
+  late AnimationController _flashCtrl;
+  late Animation<double> _flashScale;
+  late Animation<Color?> _flashColor;
   int _prevFlash = 0;
 
   // ── Count-up animation (mirrors useCountUp hook) ────────────────────────
-  late final AnimationController _countCtrl;
-  late final Animation<int> _countAnim;
+  late AnimationController _countCtrl;
+  late Animation<int> _countAnim;
   int _fromStk = 0;
   int _toStk = 0;
 

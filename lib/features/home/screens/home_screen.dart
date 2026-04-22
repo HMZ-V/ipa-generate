@@ -533,7 +533,7 @@ class _PortfolioScroller extends StatelessWidget {
     final fmt = NumberFormat('#,###');
 
     return SizedBox(
-      height: 180,
+      height: 220,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         clipBehavior: Clip.none,
@@ -543,30 +543,26 @@ class _PortfolioScroller extends StatelessWidget {
           return Container(
             width: 220,
             margin: const EdgeInsets.only(right: 12),
-            child: GlassCard(
+            child: GlassContainer(
               hoverable: true,
               onTap: () => context.push('/app/property/${b.block.id}'),
-              child: Padding(
-                padding: const EdgeInsets.all(0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Property Image with Gradient Overlay
-                    ClipRRect(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Property Image with Gradient Overlay
+                  SizedBox(
+                    height: 110,
+                    child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(AppRadius.lg)),
                       child: Stack(
+                        fit: StackFit.expand,
                         children: [
-                          // Placeholder for image
-                          Container(
-                            height: 100,
-                            width: double.infinity,
-                            color: AppColors.secondary,
-                            child: const Icon(Icons.business_rounded,
-                                color: AppColors.mutedForeground, size: 30),
+                          Image.asset(
+                            b.block.imagePath,
+                            fit: BoxFit.cover,
                           ),
                           Container(
-                            height: 100,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
@@ -593,23 +589,23 @@ class _PortfolioScroller extends StatelessWidget {
                         ],
                       ),
                     ),
-                    // Stats
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('${b.units} UNITS',
-                              style: AppTextStyles.interSemiBold(10,
-                                  color: AppColors.mutedForeground)),
-                          const SizedBox(height: 2),
-                          Text('AED ${fmt.format(b.value)}',
-                              style: AppTextStyles.jetBrainsBold(14)),
-                        ],
-                      ),
+                  ),
+                  // Stats
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${b.units} UNITS',
+                            style: AppTextStyles.interSemiBold(10,
+                                color: AppColors.mutedForeground)),
+                        const SizedBox(height: 2),
+                        Text('AED ${fmt.format(b.value)}',
+                            style: AppTextStyles.jetBrainsBold(14)),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );

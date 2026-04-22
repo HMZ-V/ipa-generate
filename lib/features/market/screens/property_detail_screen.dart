@@ -62,15 +62,17 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                     children: [
                       Stack(
                         children: [
-                          // Property Image Placeholder
-                          Container(
+                          // Property Image
+                          SizedBox(
                             height: 200,
                             width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: AppColors.secondary,
+                            child: ClipRRect(
                               borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+                              child: Image.asset(
+                                block.imagePath,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: const Icon(Icons.business_rounded, color: AppColors.mutedForeground, size: 60),
                           ),
                           // Gradient Overlay
                           Container(
@@ -378,14 +380,14 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
 
   void _handleBuy() {
     final result = ref.read(gameStateProvider.notifier).buyBlock(widget.id, _units);
-    if (result.ok) {
-      setState(() => _isSuccess = true);
-      Future.delayed(const Duration(milliseconds: 1500), () {
-        if (mounted) context.pop();
-      });
+    if (result) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Purchase successful!')),
+      );
+      context.pop(); // Return to market
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Purchase failed: ${result.error}')),
+        const SnackBar(content: Text('Purchase failed.')),
       );
     }
   }

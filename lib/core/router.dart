@@ -24,16 +24,15 @@ import 'package:go_router/go_router.dart';
 import '../shared/layouts/app_layout.dart';
 import '../features/onboarding/screens/onboarding_screen.dart';
 import '../features/home/screens/home_screen.dart';
-import '../features/city/screens/city_map_screen.dart';
-import '../features/district/screens/district_detail_screen.dart';
+import '../features/market/screens/city_map_screen.dart';
+import '../features/market/screens/district_detail_screen.dart';
 import '../features/market/screens/market_screen.dart';
-import '../features/property/screens/property_detail_screen.dart';
-import '../features/territories/screens/territories_screen.dart';
+import '../features/market/screens/property_detail_screen.dart';
 import '../features/wallet/screens/wallet_screen.dart';
 import '../features/alliance/screens/alliance_screen.dart';
-import '../features/learn/screens/learn_screen.dart';
+import '../features/missions/screens/missions_screen.dart';
 import '../features/profile/screens/profile_screen.dart';
-import '../features/notifications/screens/notifications_screen.dart';
+import '../features/profile/screens/real_mode_screen.dart';
 
 // Navigator keys — root key is needed to push full-screen routes
 // (e.g. PropertyDetail) above the ShellRoute without showing the bottom nav.
@@ -76,7 +75,7 @@ final appRouter = GoRouter(
           path: '/app/district/:id',
           pageBuilder: (context, state) {
             final id = state.pathParameters['id']!;
-            return _slideUp(state, DistrictDetailScreen(districtId: id));
+            return _slideUp(state, DistrictDetailScreen(id: id));
           },
         ),
 
@@ -86,18 +85,18 @@ final appRouter = GoRouter(
           pageBuilder: (context, state) => _slideUp(state, const MarketScreen()),
         ),
 
-        // Territories
-        GoRoute(
-          path: '/app/territories',
-          pageBuilder: (context, state) =>
-              _slideUp(state, const TerritoriesScreen()),
-        ),
-
         // Wallet
         GoRoute(
           path: '/app/wallet',
           pageBuilder: (context, state) =>
               _slideUp(state, const WalletScreen()),
+        ),
+
+        // Missions
+        GoRoute(
+          path: '/app/missions',
+          pageBuilder: (context, state) =>
+              _slideUp(state, const MissionsScreen()),
         ),
 
         // Alliance
@@ -107,13 +106,6 @@ final appRouter = GoRouter(
               _slideUp(state, const AllianceScreen()),
         ),
 
-        // Learn
-        GoRoute(
-          path: '/app/learn',
-          pageBuilder: (context, state) =>
-              _slideUp(state, const LearnScreen()),
-        ),
-
         // Profile
         GoRoute(
           path: '/app/profile',
@@ -121,11 +113,11 @@ final appRouter = GoRouter(
               _slideUp(state, const ProfileScreen()),
         ),
 
-        // Notifications
+        // Real Mode (inside shell for now)
         GoRoute(
-          path: '/app/notifications',
+          path: '/app/real',
           pageBuilder: (context, state) =>
-              _slideUp(state, const NotificationsScreen()),
+              _slideUp(state, const RealModeScreen()),
         ),
       ],
     ),
@@ -136,7 +128,7 @@ final appRouter = GoRouter(
       path: '/app/property/:id',
       pageBuilder: (context, state) {
         final id = state.pathParameters['id']!;
-        return _slideUp(state, PropertyDetailScreen(blockId: id));
+        return _slideUp(state, PropertyDetailScreen(id: id));
       },
     ),
   ],

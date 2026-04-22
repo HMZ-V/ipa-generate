@@ -143,14 +143,20 @@ abstract final class AppTextStyles {
       GoogleFonts.orbitron(fontSize: size, fontWeight: FontWeight.w500, color: color, letterSpacing: 0.01 * size);
 
   // ── Inter (body / UI font) ────────────────────────────────────────────────
-  static TextStyle interRegular(double size, {Color color = AppColors.foreground}) =>
-      GoogleFonts.inter(fontSize: size, fontWeight: FontWeight.w400, color: color);
+  static TextStyle interRegular(double size, {Color color = AppColors.foreground, FontStyle? fontStyle, FontWeight? fontWeight}) =>
+      GoogleFonts.inter(fontSize: size, color: color, fontStyle: fontStyle, fontWeight: fontWeight);
 
-  static TextStyle interMedium(double size, {Color color = AppColors.foreground}) =>
-      GoogleFonts.inter(fontSize: size, fontWeight: FontWeight.w500, color: color);
+  static TextStyle interMedium(double size, {Color color = AppColors.foreground, FontStyle? fontStyle, FontWeight? fontWeight}) =>
+      GoogleFonts.inter(fontSize: size, fontWeight: FontWeight.w500, color: color, fontStyle: fontStyle);
 
-  static TextStyle interSemiBold(double size, {Color color = AppColors.foreground, double? letterSpacing}) =>
-      GoogleFonts.inter(fontSize: size, fontWeight: FontWeight.w600, color: color, letterSpacing: letterSpacing);
+  static TextStyle interSemiBold(double size, {Color color = AppColors.foreground, double? letterSpacing, FontStyle? fontStyle}) =>
+      GoogleFonts.inter(
+        fontSize: size,
+        fontWeight: FontWeight.w600,
+        color: color,
+        letterSpacing: letterSpacing,
+        fontStyle: fontStyle,
+      );
 
   static TextStyle interBold(double size, {Color color = AppColors.foreground}) =>
       GoogleFonts.inter(fontSize: size, fontWeight: FontWeight.w700, color: color);

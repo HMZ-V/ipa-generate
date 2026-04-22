@@ -119,19 +119,23 @@ class _OnboardingScreenState extends State<OnboardingScreen>
         fit: StackFit.expand,
         children: [
           // ── Hero image backdrop ─────────────────────────────────────────
-          // Using a gradient as the hero image placeholder since we don't
-          // have assets yet — swap Container → Image.asset(...) when ready.
+          Image.asset(
+            'assets/hero-skyline.jpg',
+            fit: BoxFit.cover,
+            opacity: const AlwaysStoppedAnimation(0.4),
+          ),
+
+          // Gradient overlay to ensure text readability
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF0d1f3c), // deep navy
-                  Color(0xFF0a1628),
+                  AppColors.background.withOpacity(0.3),
+                  AppColors.background.withOpacity(0.7),
                   AppColors.background,
                 ],
-                stops: [0.0, 0.4, 1.0],
               ),
             ),
           ),

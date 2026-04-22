@@ -61,9 +61,11 @@ class _MarketScreenState extends ConsumerState<MarketScreen> {
       list.sort((a, b) => b.yieldPct.compareTo(a.yieldPct));
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    return SingleChildScrollView(
+      padding: const EdgeInsets.only(bottom: 100),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
         // ── Header ────────────────────────────────────────────────────────
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -207,7 +209,8 @@ class _MarketScreenState extends ConsumerState<MarketScreen> {
         ),
         const SizedBox(height: 100), // Bottom nav padding
       ],
-    );
+    ),
+   );
   }
 }
 
@@ -237,11 +240,9 @@ class _PropertyCard extends ConsumerWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    // Placeholder since we don't have images
-                    Container(
-                      color: AppColors.secondary,
-                      child: const Icon(Icons.business_rounded,
-                          color: AppColors.mutedForeground, size: 40),
+                    Image.asset(
+                      block.imagePath,
+                      fit: BoxFit.cover,
                     ),
                     // Gradient overlay
                     Container(

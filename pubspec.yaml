@@ -1,7 +1,7 @@
-name: stackup_flutter
+name: StackUP
 description: "StackUp — Gamified REIT investing platform. Neon dark glassmorphism UI."
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -49,4 +49,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/city-map.jpg
+    - assets/hero-skyline.jpg
+    - assets/prop-burj.jpg
+    - assets/prop-creek.jpg
+    - assets/prop-desert.jpg
+    - assets/prop-marina.jpg
+    - assets/prop-office.jpg
+    - assets/prop-palm.jpg
