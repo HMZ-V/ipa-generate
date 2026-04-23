@@ -31,8 +31,8 @@ const _tabs = [
   _TabItem('/app', 'Home', Icons.home_rounded),
   _TabItem('/app/market', 'Market', Icons.storefront_rounded),
   _TabItem('/app/city', 'Map', Icons.explore_rounded),
-  _TabItem('/app/wallet', 'Wallet', Icons.account_balance_wallet_rounded),
-  _TabItem('/app/missions', 'Missions', Icons.emoji_events_rounded),
+  _TabItem('/app/alliance', 'Alliance', Icons.shield_rounded),
+  _TabItem('/app/learn', 'Learn', Icons.school_rounded),
 ];
 
 // ── Shell layout ──────────────────────────────────────────────────────────────
@@ -289,22 +289,6 @@ class _AppLayoutState extends ConsumerState<AppLayout>
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-
-                    // Learn button
-                    GestureDetector(
-                      onTap: () => context.go('/app/learn'),
-                      child: Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: AppColors.secondary.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Icon(Icons.school_rounded,
-                            size: 18, color: AppColors.foreground),
                       ),
                     ),
                   ],

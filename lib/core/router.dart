@@ -30,9 +30,9 @@ import '../features/market/screens/market_screen.dart';
 import '../features/market/screens/property_detail_screen.dart';
 import '../features/wallet/screens/wallet_screen.dart';
 import '../features/alliance/screens/alliance_screen.dart';
-import '../features/missions/screens/missions_screen.dart';
 import '../features/profile/screens/profile_screen.dart';
 import '../features/profile/screens/real_mode_screen.dart';
+import '../features/learn/screens/learn_screen.dart';
 
 // Navigator keys — root key is needed to push full-screen routes
 // (e.g. PropertyDetail) above the ShellRoute without showing the bottom nav.
@@ -92,13 +92,6 @@ final appRouter = GoRouter(
               _slideUp(state, const WalletScreen()),
         ),
 
-        // Missions
-        GoRoute(
-          path: '/app/missions',
-          pageBuilder: (context, state) =>
-              _slideUp(state, const MissionsScreen()),
-        ),
-
         // Alliance
         GoRoute(
           path: '/app/alliance',
@@ -118,6 +111,12 @@ final appRouter = GoRouter(
           path: '/app/real',
           pageBuilder: (context, state) =>
               _slideUp(state, const RealModeScreen()),
+        ),
+        // Learn
+        GoRoute(
+          path: '/app/learn',
+          pageBuilder: (context, state) =>
+              _slideUp(state, const LearnScreen()),
         ),
       ],
     ),
