@@ -2,6 +2,11 @@ name: iOS-ipa-build
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release Version (e.g., v1.0.1)'
+        required: true
+        default: 'v1.0.1'
 
 jobs:
   build-ios:
@@ -16,7 +21,6 @@ jobs:
           architecture: x64
       - run: flutter pub get
       
-
       - run: pod repo update
         working-directory: ios
 
@@ -37,6 +41,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/ios/iphoneos/FlutterIpaExport.ipa
-          tag: v1.0
+          # Uses the version you type in when starting the workflow
+          tag: ${{ github.event.inputs.version }}
           overwrite: true
-          body: "This is first release"
+          body: "Release build for version ${{ github.event.inputs.version }}"
